@@ -6,12 +6,12 @@ var bodyParser = require('body-parser');
 var Promise  = require('bluebird');
 
 var dbConfig={
-	client:'mysql',
+	client:'pg',
     connection:{
 	 host:'localhost',
-	 user:'root',
-	 password:'your_password',
-	 database:'blog',
+	 user:'postgres',
+	 password:'',
+	 database:'pgfun',
 	 charset:'utf8'
   }
 };
