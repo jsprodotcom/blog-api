@@ -5,7 +5,7 @@ An article JSON API with Bookshelf.js
 
 ## Updated.
 
-Now supporting Postgresql db.
+Now supporting Postgresql.
 
 ## Usage.
 
@@ -14,9 +14,10 @@ Create a `pgfun` postgresql database.
     createdb --encoding utf8 --owner postgres pgfun
 
 
-Create an `article` table in pgfun db.
+Create an `article` table in pgfun db. (Assuming you are in the project
+directory)
 
-    psql --dbname pgfun --file article
+    psql --dbname pgfun --file article.sql
 
 Run app.
 
@@ -55,7 +56,7 @@ Check individual article with it's ID
 
 ## What else?
 
-I'm getting use knex, bookshelf & PG hope to intergrate it with these guys
+I'm learning knex, bookshelf & PG hope to intergrate it with these guys
 soon!
 
 - [koa-blogapi](https://github.com/maotora/koa-blogapi)
