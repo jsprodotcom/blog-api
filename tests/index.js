@@ -16,3 +16,14 @@ describe('blog-api basics', function() {
     })
 })
 
+describe('blog-api CRUD support', function() {
+    var article = {}
+
+    beforeEach(function(done) {
+        article = {
+            'title': 'Testing',
+            'body': 'Wareva',
+            'author': 'test_user'
+        }
+    })
+})
