@@ -2,6 +2,10 @@
   "name": "article_api",
   "description": "expose articles via JSON",
   "version": "0.0.1",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "node test/index.js"
+  },
   "private": true,
   "dependencies": {
     "bluebird": "^2.1.3",
@@ -9,6 +13,7 @@
     "bookshelf": "*",
     "express": "4.4.3",
     "knex": "*",
+    "nodemon": "^1.11.0",
     "pg": "*"
   }
 }

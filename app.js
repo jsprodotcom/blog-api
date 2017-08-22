@@ -96,6 +96,32 @@ app.post('/api/article',function(req,res){
 	});
 });
 
+app.put('/api/article/:article_id', function(req, res) {
+    var id = req.params.article_id;
+    var updateData = req.body;
+
+    new Article().where('id', id)
+    .save(updateData, {patch: true})
+    .then(function(article_id) {
+        res.send('Successully updated article!');
+    })
+    .catch(function(err) {
+        console.log('Something bad happened ', err);
+    })
+})
+
+app.delete('/api/article/:article_id', function(req, res) {
+    var id = req.params.article_id;
+	new Article().where('id', id)
+	.destroy()
+	.then(function(article_id){
+		res.send('Successully removed article!');
+	}).catch(function(error){
+		console.log(error);
+		res.send('Error retrieving article');
+	});
+})
+
 app.listen(3000,function(){
 	console.log("Express started at port 3000");
 });
