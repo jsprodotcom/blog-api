@@ -122,6 +122,4 @@ app.delete('/api/article/:article_id', function(req, res) {
 	});
 })
 
-app.listen(3000,function(){
-	console.log("Express started at port 3000");
-});
+module.exports = app
