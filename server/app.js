@@ -106,7 +106,7 @@ app.put('/api/article/:article_id', function(req, res) {
         res.send('Successully updated article!');
     })
     .catch(function(err) {
-        console.log('Something bad happened ', err);
+        console.log('Error updating article', err);
     })
 })
 
@@ -118,7 +118,7 @@ app.delete('/api/article/:article_id', function(req, res) {
 		res.send('Successully removed article!');
 	}).catch(function(error){
 		console.log(error);
-		res.send('Error retrieving article');
+		res.send('Error deleting article');
 	});
 })
 
