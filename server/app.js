@@ -5,16 +5,13 @@ var app = express();
 var bodyParser = require('body-parser');
 var Promise  = require('bluebird');
 
-var dbConfig={
-	client:'pg',
-    connection:{
-	 host:'localhost',
-	 user:'postgres',
-	 password:'',
-	 database:'pgfun',
-	 charset:'utf8'
-  }
-};
+//- For testing & development only.
+if(process.env === 'development') {
+    var dbConfig = require('../knexfile.js').development;
+} else {
+    var dbConfig = require('../knexfile.js').test;
+}
+
 var knex = require('knex')(dbConfig);
 var bookshelf = require('bookshelf')(knex);
 

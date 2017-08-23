@@ -3,8 +3,8 @@
   "description": "expose articles via JSON",
   "version": "0.0.1",
   "scripts": {
-    "start": "nodemon server/index.js",
-    "tests": "mocha --require tests/pre_test.js --recursive tests/"
+    "start": "NODE_ENV=development nodemon server/index.js",
+    "tests": "NODE_ENV=test knex migrate:rollback && NODE_ENV=test knex migrate:latest && mocha --require tests/pre_test.js --recursive tests/"
   },
   "private": true,
   "dependencies": {
@@ -15,6 +15,7 @@
     "knex": "*",
     "nodemon": "^1.11.0",
     "pg": "*",
+    "sqlite3": "^3.1.9",
     "supertest": "^3.0.0"
   },
   "devDependencies": {
