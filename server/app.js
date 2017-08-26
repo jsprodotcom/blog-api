@@ -5,16 +5,13 @@ var app = express();
 var bodyParser = require('body-parser');
 var Promise  = require('bluebird');
 
-var dbConfig={
-	client:'mysql',
-    connection:{
-	 host:'localhost',
-	 user:'root',
-	 password:'your_password',
-	 database:'blog',
-	 charset:'utf8'
-  }
-};
+//- For testing & development only.
+if(process.env === 'development') {
+    var dbConfig = require('../knexfile.js').development;
+} else {
+    var dbConfig = require('../knexfile.js').test;
+}
+
 var knex = require('knex')(dbConfig);
 var bookshelf = require('bookshelf')(knex);
 
@@ -96,6 +93,30 @@ app.post('/api/article',function(req,res){
 	});
 });
 
-app.listen(3000,function(){
-	console.log("Express started at port 3000");
-});
+app.put('/api/article/:article_id', function(req, res) {
+    var id = req.params.article_id;
+    var updateData = req.body;
+
+    new Article().where('id', id)
+    .save(updateData, {patch: true})
+    .then(function(article_id) {
+        res.send('Successully updated article!');
+    })
+    .catch(function(err) {
+        console.log('Error updating article', err);
+    })
+})
+
+app.delete('/api/article/:article_id', function(req, res) {
+    var id = req.params.article_id;
+	new Article().where('id', id)
+	.destroy()
+	.then(function(article_id){
+		res.send('Successully removed article!');
+	}).catch(function(error){
+		console.log(error);
+		res.send('Error deleting article');
+	});
+})
+
+module.exports = app
