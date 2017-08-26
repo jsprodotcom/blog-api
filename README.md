@@ -56,15 +56,13 @@ Check individual article with it's ID
 
 ### Update article
 
-    http PUT localhost:3000/api/article title="Introduction" body="What
+    http PUT localhost:3000/api/article/0 title="Introduction" body="What
     the hell"
     author="ArchNoob"
 
 ### Remove article
 
-    http DELETE localhost:3000/api/article/1
-
-Where 1 is the article ID.
+    http DELETE localhost:3000/api/article/0
 
 ## Run Tests with
 
