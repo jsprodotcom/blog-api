@@ -5,7 +5,9 @@ An article JSON API with Bookshelf.js
 
 ## Updated.
 
-Now supporting Postgresql.
+Now supporting Postgresql + MySQL + SQLite.
+
+Thanks To: knex migrations!
 
 ## Usage.
 
@@ -14,16 +16,15 @@ Create a `pgfun` postgresql database.
     createdb --encoding utf8 --owner postgres pgfun
 
 
-Create an `article` table in pgfun db. (Assuming you are in the project
-directory)
+Build the neccessary tables in for `NODE_ENV=development` with
 
-    psql --dbname pgfun --file article.sql
+    npm run migrations:dev
 
-Run app.
+Start app with
 
-    node app.js
+    npm run start
 
-## Add article
+### Add article
 
 With cURL
 
@@ -36,7 +37,7 @@ With httpie
     http localhost:3000/api/article title="Introduction" body="WHT"
     author="ArchNoob"
 
-## Check all articles
+### Check all articles
 
 With cURL
 
@@ -46,13 +47,28 @@ With httpie
 
     http localhost:3000/api/article
 
+
 ## Check individual article by ID.
 
 Check individual article with it's ID
 
     http localhost:3000/api/article/0
 
-(Same with cURL but you gotta add "http")
+### Update article
+
+    http PUT localhost:3000/api/article title="Introduction" body="What
+    the hell"
+    author="ArchNoob"
+
+### Remove article
+
+    http DELETE localhost:3000/api/article/1
+
+Where 1 is the article ID.
+
+## Run Tests with
+
+    npm run tests
 
 ## What else?
 
